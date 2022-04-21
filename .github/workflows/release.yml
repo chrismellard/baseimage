@@ -32,6 +32,8 @@ jobs:
           tags: ${{ env.BUILD_REGISTRY }}/${{ env.TEMP_IMAGE_NAME }}:${{ env.IMAGE_TAG }}
       - name: Compare images for diff
         run: |
+          docker pull ${{ env.BUILD_REGISTRY }}/${{ env.TEMP_IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          docker pull ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           EXISTING_IMAGE=$(docker inspect --format='{{.RootFS}}' ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }})
           NEW_IMAGE=$(docker inspect --format='{{.RootFS}}' ${{ env.BUILD_REGISTRY }}/${{ env.TEMP_IMAGE_NAME }}:${{ env.IMAGE_TAG }})
           if [ "$NEW_IMAGE" != "$EXISTING_IMAGE" ]; then echo "PUBLISH=true" >> "$GITHUB_ENV"; fi

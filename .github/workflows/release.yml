@@ -27,5 +27,5 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-#          push: true
+          push: true
           tags: ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}

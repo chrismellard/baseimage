@@ -1,7 +1,10 @@
 name: "Release"
 on:
-  schedule:
-    - cron:  '0/2 * * * *'
+  push:
+    branches:
+      - main
+#  schedule:
+#    - cron:  '0/2 * * * *'
 
 env:
   BUILD_REGISTRY: ghcr.io

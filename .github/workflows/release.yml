@@ -6,7 +6,7 @@ on:
 
 env:
   BUILD_REGISTRY: ghcr.io
-  IMAGE_NAME: baseimage
+  IMAGE_NAME: chrismellard/baseimage
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:

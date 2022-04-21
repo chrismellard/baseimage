@@ -30,6 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           tags: ${{ env.BUILD_REGISTRY }}/${{ env.TEMP_IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          push: true
       - name: Compare images for diff
         run: |
           docker pull ${{ env.BUILD_REGISTRY }}/${{ env.TEMP_IMAGE_NAME }}:${{ env.IMAGE_TAG }}

@@ -44,3 +44,4 @@ jobs:
         with:
           push: true
           tags: ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+

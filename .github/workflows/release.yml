@@ -39,6 +39,8 @@ jobs:
           EXISTING_IMAGE=$(docker inspect --format='{{.RootFS}}' ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest)
           NEW_IMAGE=$(docker inspect --format='{{.RootFS}}' ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }})
           if [ "$NEW_IMAGE" != "$EXISTING_IMAGE" ]; then echo "PUBLISH=true" >> "$GITHUB_ENV"; fi
+      - name: test
+        run: echo ${{ env.PUBLISH }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         if: env.PUBLISH == 'true'

@@ -28,7 +28,7 @@ jobs:
       - name: Build proposed Docker image
         uses: docker/build-push-action@v2
         with:
-          tags: ${{ env.BUILD_REGISTRY }}/${{ env.TEMP_IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           push: true
       - name: Compare images for diff
         run: |

@@ -36,7 +36,7 @@ jobs:
         run: |
           docker pull ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           echo peter
-          docker pull ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest || echo "PUBLISH=true" >> "$GITHUB_ENV" && exit 0
+          docker pull ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest || (echo "PUBLISH=true" >> "$GITHUB_ENV" && exit 0)
           echo paul
           EXISTING_IMAGE=$(docker inspect --format='{{.RootFS}}' ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest)
           echo simon

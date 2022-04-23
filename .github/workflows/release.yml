@@ -80,7 +80,7 @@ jobs:
       - name: Push changes
         run: git push -u origin base-image-${{ env.IMAGE_TAG }}
       - name: Open PR
-        run: gh pr create --title "Bump base image ${{ env.IMAGE_TAG }} --body "Base Image to ${{ env.IMAGE_TAG }}"
+        run: gh pr create --title "Bump base image ${{ env.IMAGE_TAG }}" --body "Base Image to ${{ env.IMAGE_TAG }}"
         env:
           GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
 #      - name: Merge PR

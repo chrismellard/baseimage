@@ -45,3 +45,4 @@ jobs:
           tags: |
             ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
             ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+

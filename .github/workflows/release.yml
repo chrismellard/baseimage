@@ -42,7 +42,7 @@ jobs:
         run: |
           docker pull ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           docker pull ${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest || (echo "PUBLISH=true" >> "$GITHUB_ENV" && exit 0)
-          echo "PUBLISH=$(container-diff diff daemon://${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} daemon://${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest -j | jq '.[].Diff | length')" >> "$GITHUB_ENV"
+          echo "PUBLISH=$($HOME/bin/container-diff diff daemon://${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} daemon://${{ env.BUILD_REGISTRY }}/${{ env.IMAGE_NAME }}:latest -j | jq '.[].Diff | length')" >> "$GITHUB_ENV"
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         if: env.PUBLISH != 0
